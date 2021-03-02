@@ -20,14 +20,6 @@ public class TimeCounter : MonoBehaviour
 
     private void Awake()
     {
-        //GameObject[] timer = GameObject.FindGameObjectsWithTag("Timer");
-
-        //if (timer.Length > 1)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-
-        //DontDestroyOnLoad(this.gameObject);
 
         if (PlayerPrefs.HasKey("currentStars"))
         {
