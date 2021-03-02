@@ -28,8 +28,7 @@ public class TimeCounter : MonoBehaviour
         }
         else
         {
-            currentStars = 0; // удалить потом!!!!!!
-            print("no");
+            currentStars = 0; 
         }
             
 
@@ -40,7 +39,7 @@ public class TimeCounter : MonoBehaviour
         if (PlayerPrefs.HasKey("exitTime"))
             exitTime = DateTime.Parse(PlayerPrefs.GetString("exitTime"));
         if (PlayerPrefs.HasKey("timeToIncrement"))
-            timeToSubtract = TimeSpan.Parse(PlayerPrefs.GetString("timeToIncrement"));
+            timeToSubtract = TimeSpan.Parse(PlayerPrefs.GetString("timeToSubtract"));
         
     }
     void Start()
@@ -66,7 +65,7 @@ public class TimeCounter : MonoBehaviour
                     timeToSubtract -= offlineTime;
                     StartCoroutine(Timer());
                 }
-                else if (offlineTime > timeToIncrement)
+                else if (offlineTime > timeToSubtract)
                 {
                     countDown = true;
                     offlineTime -= timeToSubtract;
@@ -99,7 +98,7 @@ public class TimeCounter : MonoBehaviour
             if (Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Menu))
             {
                 PlayerPrefs.SetString("exitTime", DateTime.Now.ToString());
-                PlayerPrefs.SetString("timeToIncrement", timeToSubtract.ToString());
+                PlayerPrefs.SetString("timeToSubtract", timeToSubtract.ToString());
                 PlayerPrefs.SetInt("currentLives", currentLives);
                 PlayerPrefs.SetInt("currentStars", currentStars);
                 Application.Quit();
@@ -110,7 +109,7 @@ public class TimeCounter : MonoBehaviour
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetString("exitTime", DateTime.Now.ToString());
-        PlayerPrefs.SetString("timeToIncrement", timeToSubtract.ToString());
+        PlayerPrefs.SetString("timeToSubtract", timeToSubtract.ToString());
         PlayerPrefs.SetInt("currentLives", currentLives);
         PlayerPrefs.SetInt("currentStars", currentStars);
     }
@@ -118,7 +117,7 @@ public class TimeCounter : MonoBehaviour
     private void OnApplicationPause()
     {
         PlayerPrefs.SetString("exitTime", DateTime.Now.ToString());
-        PlayerPrefs.SetString("timeToIncrement", timeToSubtract.ToString());
+        PlayerPrefs.SetString("timeToSubtract", timeToSubtract.ToString());
         PlayerPrefs.SetInt("currentLives", currentLives);
         PlayerPrefs.SetInt("currentStars", currentStars);
     }
@@ -126,7 +125,7 @@ public class TimeCounter : MonoBehaviour
     private void OnDisable()
     {
         PlayerPrefs.SetString("exitTime", DateTime.Now.ToString());
-        PlayerPrefs.SetString("timeToIncrement", timeToSubtract.ToString());
+        PlayerPrefs.SetString("timeToSubtract", timeToSubtract.ToString());
         PlayerPrefs.SetInt("currentLives", currentLives);
         PlayerPrefs.SetInt("currentStars", currentStars);
     }
@@ -150,9 +149,6 @@ public class TimeCounter : MonoBehaviour
                 }
 
             }
-
-        
-
     }
 
     public void SubtractLife()
