@@ -7,27 +7,22 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb2D;
     protected Animator playerAnim;
-    
     private Touch theTouch;
-    private Vector2 touchStartPosition, touchEndPosition;
-    protected Vector2 startPos;
-    protected string direction;
-    private bool isPressed;
     protected GameManager gameManager;
     private SpriteRenderer[] spriteRenderer;
     
+    private bool isPressed;
+    
     public float speed = 2f;
     public float steps;
-    public string codeName = "Hero";
-    //public static bool needToGo;
-    protected Vector2 targetReached;
-    private Vector2 targetRight;
-    private Vector2 targetLeft;
-    private Vector2 targetUp;
-    private Vector2 targetDown;
-
     
-
+    public string codeName = "Hero";
+    protected string direction;
+    
+    protected Vector2 startPos, targetReached;
+    private Vector2 targetRight, targetLeft, targetUp, targetDown;
+    private Vector2 touchStartPosition, touchEndPosition;
+    
     private void Start()
     {
         
@@ -127,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
                 else
                 {
-                    //direction = y > 0 ? "Up" : "Down";
                     gameManager.movesLeft--;
                     isPressed = false;
                     if (y > 0)
