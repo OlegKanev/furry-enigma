@@ -25,13 +25,10 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
-        
         playerAnim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
         targetReached = new Vector2(7, 7);
         direction = "Tapped";
-        
     }
 
     private void OnEnable()
@@ -49,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
         if (gameManager.needToGo)
         {
             gameManager.InvokeOnClick();
@@ -67,15 +63,12 @@ public class PlayerController : MonoBehaviour
                 s.sortingLayerName = "player";
             }
             gameManager.movesleftBeforeAction = gameManager.movesLeft;
-
         }
     }
 
    
     private void Update()
     {
-
-
         if (Input.touchCount > 0 && isPressed)
         {
             theTouch = Input.GetTouch(0);
@@ -95,7 +88,6 @@ public class PlayerController : MonoBehaviour
                 if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
                 {
                     direction = "Tapped";
-
                     isPressed = false;
                 }
 
@@ -108,18 +100,15 @@ public class PlayerController : MonoBehaviour
                         direction = "Right";
                         targetReached = targetRight;
                         playerAnim.SetBool("goesRight", true);
-                        
                     }
                     else
                     {
                         direction = "Left";
                         targetReached = targetLeft;
                         playerAnim.SetBool("goesLeft", true);
-                        
                     }
                         
                 }
-
                 else
                 {
                     gameManager.movesLeft--;
@@ -138,15 +127,12 @@ public class PlayerController : MonoBehaviour
                         playerAnim.SetBool("goesDown", true);
                     }
                 }
-
             }
         }
         if (direction != "Tapped")
         {
             gameManager.needToGo = false;
-
             rb2D.MovePosition(Vector2.MoveTowards(transform.position, targetReached, speed * Time.deltaTime));
-
         }
 
 
@@ -172,9 +158,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Test");
                 gameManager.GameOver();
             }
-            
         }
-
     }
 
     public void ChangeSortingLayer()
@@ -214,9 +198,6 @@ public class PlayerController : MonoBehaviour
             gameManager.GameOver();
             gameObject.SetActive(false);
             Debug.Log("not active");
-            
         }
     }
-
-
 }
