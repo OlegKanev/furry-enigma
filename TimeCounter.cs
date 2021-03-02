@@ -94,25 +94,6 @@ public class TimeCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space) && currentLives > 0)
-        //{
-        //    SubtractLife();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.Backspace) && currentLives < 10)
-        //{
-        //    currentLives++;
-        //}
-        //if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    timeToIncrement -= subtractTimeTest;
-        //}
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    PlayerPrefs.DeleteKey("currentStars");
-        //    currentStars = 0;
-        //}
-
         if (Application.platform == RuntimePlatform.Android)
         {
             if (Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Menu))
