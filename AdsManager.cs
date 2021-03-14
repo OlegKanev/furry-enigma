@@ -16,7 +16,7 @@ public class AdsManager : MonoBehaviour
 
     void Start()
     {
-        //ShowFullscreenAd();
+        ShowFullscreenAd();
     }
 
     public void ShowRewardedVideo()
